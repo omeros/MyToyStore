@@ -28,12 +28,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/toy-edit/:todoId',
+    path: '/toy-edit/:toyId',
     name: 'toy-edit',
     component: toyEdit
   },
   {
-    path: '/toy-details/:todoId',
+    path: '/toy-details/:toyId',
     name: 'toy-details',
     component: toyDetails
   },

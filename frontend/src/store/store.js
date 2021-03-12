@@ -35,28 +35,17 @@ export default new Vuex.Store({
     //      return state.userDetails;
     //   },
        
-        getTodoById: (state) => (id) => {
-            var  todoToEdit=null
-            state.toys.find(todo => {
-                if (todo._id === id){
-                    todoToEdit= todo;
+        getToyById: (state) => (id) => {
+            var  toyToEdit=null
+            state.toys.find(toy => {
+                if (toy._id === id){
+                    toyToEdit= toy;
                 }
 
             }) 
-            return todoToEdit
-          },
-          gettoys(state){
-           return state.toys
+            return toyToEdit
           },
 
-        getTodo({id}){
-            toys.forEach(todo => {
-                if(id===todo_id){
-                    return todo;
-                }
-                
-            });
-        },
         getToysToShow(state) {
             console.log('gettoysToShow',state)
             if (!state.filterBy) return state.toys
@@ -74,11 +63,7 @@ export default new Vuex.Store({
             console.log(' payload in setToys in store',payload.toys)
           state.toys = payload.toys;
         },
-        // userTodo(state,payload){
-        //    console.log(' update in stor in mutatione',payload.user)
-        //    state.userDetails=payload.user
-       
-        // },
+
         filterByChanged(state,payload){
             console.log('filterByChanged is running',payload.strFilter.name)
             state.filterBy = payload.strFilter.name
@@ -97,13 +82,13 @@ export default new Vuex.Store({
             const idx = state.toys.findIndex( p => p._id === payload.toy._id)
             state.toys.splice(idx,1,payload.toy)
         },
-        removeTodo(state, {todoId}) {
+        removeToy(state, {toyId: toyId}) {
             // toysService.remove(todoId)
-            const idx = state.toys.findIndex( p => p._id === todoId)
+            const idx = state.toys.findIndex( p => p._id === toyId)
             state.toys.splice(idx, 1)
         },
    
-        saveTodo(state,payload){
+        saveToy(state,payload){
         console.log('todo in stor to save',payload.theTodoToSave)
         //toysService.save(payload.theTodoToSave)
        // var newtoys =JSON.parse(JSON.stringify(state.toys));
@@ -123,7 +108,7 @@ export default new Vuex.Store({
 
 
         },
-        saveTodo(context,payload){
+        saveToy(context,payload){
             //TODO : support EDIT
             console.log(' theToyToSave in action in store ',payload.theToyToSave)
             const type =(payload.theToyToSave._id)? 'updateTodo': 'addTodo';
@@ -135,7 +120,7 @@ export default new Vuex.Store({
               context.commit({type , toy : savedToy})
             })
         },
-        removeTodo(context,payload){
+        removeToy(context,payload){
             toysService.remove(payload.todoId)
             .then(()=>{
                 context.commit(payload)

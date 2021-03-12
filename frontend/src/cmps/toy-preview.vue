@@ -5,9 +5,9 @@
                           <li   @click=" myFilter"  v-bind:class="{checked : isActive}">{{test}}</li>
                       </ul>
                 
-                      <button @click="removeTodo(todo._id)">Delete </button>
-                      <router-link class="edit-link" :to="'/toy-edit/'+todo._id">Edit  </router-link> 
-                      <router-link class="details-link" :to="'/toy-details/'+todo._id"> Details  </router-link> 
+                      <button @click="removeToy(toy._id)">Delete </button>
+                      <router-link class="edit-link" :to="'/toy-edit/'+toy._id">Edit  </router-link> 
+                      <router-link class="details-link" :to="'/toy-details/'+toy._id"> Details  </router-link> 
 
 
 
@@ -19,24 +19,24 @@
 
 export default {
   name: 'toy-preview',
-     props:['todo'],
+     props:['toy'],
              data() {
           return {
             isActive: false,
           }
       },
       mounted (){
-         console.log('toys in preview',this.todo)
+         console.log('toy in preview',this.toy)
       },
           computed: {
       test(){
-          return this.todo.name
+          return this.toy.name
       },
      },
      methods: {
-  removeTodo(id){
-    console.log('toy id delete from todo preview,' ,id)
-    this.$emit("remotodo", id);
+  removeToy(id){
+    console.log('toy id delete from toy preview,' ,id)
+    this.$emit("remotoy", id);
 },
    myFilter() {
   this.isActive = !this.isActive;

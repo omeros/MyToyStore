@@ -2,10 +2,10 @@
 
 <template>
   <div class="toy-list">
-                <!-- <toy-preview :todo="todo"   @remotodo=removeTodo /> -->
+                <!-- <toy-preview :toy="toy"   @remotoy=removeToy /> -->
                 
-            <div v-for="todo in todos" :key="todo._id"  >
-                <toy-preview :todo="todo"  @remotodo=removeTodo  />
+            <div v-for="toy in toys" :key="toy._id"  >
+                <toy-preview :toy="toy"  @remotoy=removeToy  />
 
             </div>
     toy list
@@ -17,18 +17,18 @@
 
 export default {
      name: 'toy-list',
-        props: ['todos'],
+        props: ['toys'],
     methods: {
-        removeTodo(id){
-            console.log('bug id delete from bug list,' ,id)
-            this.$emit("remtodo", id);
+        removeToy(id){
+            console.log('toy id delete from toy list,' ,id)
+            this.$emit("remtoy", id);
         },
         addBug(){
 
         }
     },
        mounted (){
-         console.log('toys in toy-list',this.todos)
+         console.log('toys in toy-list',this.toys)
       },
 
     components:{

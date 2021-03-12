@@ -1,14 +1,14 @@
 
 <template>
   <div class="toy">
-    <!-- <toy-list :todos="todosToShow" @remtodo=removeTodo /> -->
+    <!-- <toy-list :toys="toysToShow" @remtodo=removeToy /> -->
     <toy-filter @filtered="setFilter" />
-    <toy-list :todos="toysToShow" @remtodo="removeTodo" />
+    <toy-list :toys="toysToShow" @remtoy="removeToy" />
 
     <!-- 
-                         <h1>ToDos To DO</h1>   
+                         <h1>toys To DO</h1>   
             <todo-filter @filtered="setFilter" />
-            <todo-list :todos="todosToShow" @remtodo=removeTodo />-->
+            <todo-list :toys="toysToShow" @remtodo=removeToy />-->
 
     <h3>Add a Toy</h3>
     <div class="baba-g">
@@ -47,7 +47,7 @@ export default {
         name: "willOveride",
         type: "willOveride",
       },
-      todos: [],
+      toys: [],
       filterBy: null,
       productToEdit: toysService.getEmptyToy(),
     };
@@ -58,12 +58,12 @@ export default {
     this.$store.dispatch({ type: "loadToys" });
   },
   mounted() {
-    this.todos = this.$store.state.toys;
+    this.toys = this.$store.state.toys;
   },
   computed: {
     toysToShow() {
       const toysToShow = this.$store.getters.getToysToShow;
-      console.log("todos from toy App", toysToShow);
+      console.log("toys from toy App", toysToShow);
       return toysToShow;
     },
   },
@@ -76,14 +76,14 @@ export default {
     addToy() {
       console.log("Adding Toy...", this.productToEdit);
       this.$store.dispatch({
-        type: "saveTodo",
+        type: "saveToy",
         theToyToSave: this.productToEdit,
       });
       this.productToEdit = toysService.getEmptyToy();
     },
-    removeTodo(todoId) {
-      console.log("Removing...", todoId);
-      this.$store.dispatch({ type: "removeTodo", todoId });
+    removeToy(toyId) {
+      console.log("Removing...", toyId);
+      this.$store.dispatch({ type: "removeToy", toyId });
       this.productToEdit = toysService.getEmptyToy();
     },
   },

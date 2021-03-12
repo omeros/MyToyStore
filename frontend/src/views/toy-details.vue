@@ -1,32 +1,34 @@
 <template>
   <div class="home">
      <h2>toy datails </h2>
-          {{todo}}
+          {{toy}}
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/cmps/HelloWorld.vue'
+// import HelloWorld from '@/cmps/HelloWorld.vue'
 
 export default {
   name: 'toy-details',
      data() {
     return {
-        todoId : 'null',
-        todo: null,
+        toyId : 'null',
+        toy: null,
     }    
 },
   mounted(){
-    this.todoId= this.$route.params.todoId;
-    // this.todoToEdit = this.$store.getters.getTodoById(this.todoId)
-    var myJSON = JSON.stringify(this.$store.getters.getTodoById(this.todoId));
-    this.todo = JSON.parse(myJSON);
+    this.toyId= this.$route.params.toyId;
+        console.log(' toyID in toy details : ',this.toyId )
+    // this.toyToEdit = this.$store.getters.getToyById(this.toyId)
+    var myJSON = JSON.stringify(this.$store.getters.getToyById(this.toyId));
+    this.toy = JSON.parse(myJSON);
+    console.log(' toy in toy -details : ',this.toy )
 
 
     },
   components: {
-    HelloWorld
+    // HelloWorld
   }
 }
 </script>
