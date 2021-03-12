@@ -82,9 +82,9 @@ export default new Vuex.Store({
             const idx = state.toys.findIndex( p => p._id === payload.toy._id)
             state.toys.splice(idx,1,payload.toy)
         },
-        removeToy(state, {toyId: toyId}) {
+        removeToy(state, payload) {
             // toysService.remove(todoId)
-            const idx = state.toys.findIndex( p => p._id === toyId)
+            const idx = state.toys.findIndex( p => p._id === payload.toyId)
             state.toys.splice(idx, 1)
         },
    
@@ -121,7 +121,7 @@ export default new Vuex.Store({
             })
         },
         removeToy(context,payload){
-            toysService.remove(payload.todoId)
+            toysService.remove(payload.toyId)
             .then(()=>{
                 context.commit(payload)
             })

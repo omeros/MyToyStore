@@ -2,7 +2,7 @@
   <div class="toy-preview">
    
                          <ul>
-                          <li   @click=" myFilter"  v-bind:class="{checked : isActive}">{{test}}</li>
+                          <li   @click=" myFilter"  v-bind:class="{checked : isActive}">{{myToy}}</li>
                       </ul>
                 
                       <button @click="removeToy(toy._id)">Delete </button>
@@ -29,7 +29,7 @@ export default {
          console.log('toy in preview',this.toy)
       },
           computed: {
-      test(){
+      myToy(){
           return this.toy.name
       },
      },
